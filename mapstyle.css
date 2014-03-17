@@ -1,0 +1,330 @@
+/*Page*/
+	body{
+		overflow:hidden;
+		-webkit-user-select: none; /* Chrome/Safari */        
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+ */
+
+		/* Rules below not implemented in browsers yet */
+		-o-user-select: none;
+		user-select: none;
+	}
+	body:not(.animate) .animate {
+		-webkit-transition:none;
+		-moz-transition:none;
+		-ms-transition:none;
+		-o-transition:none;
+		transition:none;
+	}
+/*Header*/
+	#wpadminbar{
+		display:none;
+	}
+	#header{
+		position:absolute;
+		top:0;
+		width:100%;
+		height:120px; 
+		padding:20px 0; 
+		box-shadow: 0 5px #4b4b52;
+		z-index:5 !important;
+	}
+	.widget-title{
+		border: none !important;
+	}
+	.header-widget-area{
+		padding-top:12px !important;
+	}
+	#title-area{
+		height:95px !important;
+		width:600px;
+	}
+	#title{
+		font-size:36;
+		width:auto;
+	}
+	.textwidget a{
+		color: white;
+		font-size: 26px;
+	}
+/*Content*/
+	#content{
+		overflow:hidden;
+	}
+	h1.entry-title{
+		display:none;
+	}
+
+/*About*/
+	#about{
+		width:60%;
+		margin:2% 20%;
+		position:absolute;
+		top:125px;
+		bottom:40px;
+		left:0;
+		right:0;
+	}
+	#about-title{
+		text-align:center;
+	}
+	#about-desc{}
+/*Map*/
+	#map { 
+		position:absolute; 
+		top:125px; 
+		bottom:40px;
+		width:100%;
+	}
+	#_GMapContainer{
+		margin-left:-150px;
+		width:-moz-calc(100% + 150px) !important;
+		width:-webkit-calc(100% + 150px) !important;
+		width:calc(100% + 150px) !important;
+		z-index:0;
+	}
+	#_GMapContainer > div > div:nth-child(1){
+		margin-left:78px;
+	}
+	.mapbox-info-toggle{
+		display:none !important;
+	}
+	.leaflet-right{
+		margin-right:20%;
+	}
+	.leaflet-left{
+		margin-left:150px;
+	}
+	.leaflet-control-zoom-in{
+		z-index:2;
+	}
+	.gmnoprint{
+		display:none;
+	}
+	.gm-style-cc{
+		display:none;
+	}
+/*Navigation*/
+	#control-panel{
+		postion:absolute;
+		top:125px; 
+		bottom:40px;
+		left:0px;
+		width:150px;
+		z-index:3;
+	}
+	.control-pane{
+		width:75px;
+		height:auto;
+		overflow:hidden;
+		word-wrap:break-word;
+		
+	}
+	#control-pane1{
+		position:absolute; 
+		top:0;
+		bottom:0;
+		left:0;
+	}
+	#control-pane2{
+		position:absolute; 
+		top:0;
+		bottom:0;
+		left:75px;
+	}
+	.controls{
+		height:100%;
+		overflow-y:scroll;
+		overflow-x:hidden;
+		width:90.75px;
+	}
+	.controls > div{
+		width:75px;
+	}
+	.control-button{
+		width:100% !important;
+		display:inline-block;
+		/*height:auto;*/
+		padding:10px 0 !important;
+	}
+	.controls > div a{
+		font-size:11px;
+		font-family: 'Open Sans', helvetica, sans-serif;
+		font-weight: 800;
+		padding-bottom:30px;
+	}
+/*Navigation Buttons Colors*/
+	#filter-all{}
+	#filter-township{
+		background-color: #f86767;
+		color:#000000;
+	}
+	#filter-township:hover, #filter-township.active{
+		background-color:#FF836E;
+	}
+	#filter-bompai{
+		background-color: #f1f075;
+		color:#000000;
+	}
+	#filter-bompai:hover, #filter-bompai.active{
+		background-color:#FFF07F;
+	}
+	#filter-tokarawa{
+		background-color: #7ec9b1;
+		color:#000000;
+	}
+	#filter-tokarawa:hover, #filter-tokarawa.active{
+		background-color:#9EFFB8;
+	}
+	#filter-challawa{
+		background-color:#a3e46b;
+		color:#000000;
+	}
+	#filter-challawa:hover, #filter-challawa.active{
+		background-color:#DDFF74;
+	}
+	#filter-jogana{
+		background-color:#f5c272;
+		color:#000000;
+	}
+	#filter-jogana:hover, #filter-jogana.active{
+		background-color:#FBDB82;
+	}
+	#filter-sharada{
+		background-color:#1087bf;
+	}
+	#filter-sharada:hover, #filter-sharada.active{
+		background-color:#07B0D6;
+	}
+	#filter-dawanau{
+		background-color:#d27591;
+		color:#000000;
+	}
+	#filter-dawanau:hover, #filter-dawanau.active{
+		background-color:#E3867C;
+	}
+	#filter-hadejia{
+		background-color:#c091e6;
+		color: #000000;
+	}
+	#filter-hadejia:hover, #filter-hadejia.active{
+		background-color:#E28DF3;
+	}
+	#filter-zaria{
+		background-color:#b7ddf3;
+		color: #000000;
+	}
+	#filter-zaria:hover, #filter-zaria.active{
+		background-color:#C4FFF6;
+	}
+	#filter-misc{
+		background-color: #cccccc;
+		color: #000000;
+	}
+	#filter-misc:hover, #filter-misc.active{
+		background-color:#FFFEED;
+	}
+	.navhide{
+		position:absolute;
+		right:0;
+		bottom:0;
+		z-index:4;
+	}
+	#show-nav{
+		position:fixed;
+		bottom:40%;
+		left:20px;
+		z-index:2;
+	}
+/*Info Pane*/
+	#info-pane{
+		position:absolute; 
+		top:125px; 
+		bottom:40px;
+		right:0;
+		overflow-y:auto;
+		overflow-x:hidden;
+		width:250px;
+		z-index:3;
+	}
+	#info{
+		height:auto;
+		font-family: 'Open Sans', helvetica, sans-serif;
+	}
+	.infohide{
+		position:absolute;
+		left:0;
+		bottom:0;
+		z-index:4;
+	}
+
+	#show-info{
+		position:fixed;
+		bottom:40%;
+		right:20px;
+		z-index:2;
+	}
+/*Legend Industry Filter*/
+	#legend-pane{
+		width:auto;
+		height:60px;
+		position:absolute;
+		bottom:50px;
+		left:150px;
+		margin-left:10px;
+		z-index:2;
+	}
+	#legend{
+		height:60px;
+	}
+	.leather{
+		background-image:url('http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/images/leather.png'); 
+		background-repeat:no-repeat; 
+		background-position:center;
+		background-size: 35px 35px;
+	}
+	.legend-tag{
+		width:40px;
+		height:25px;
+		position:absolute;
+		bottom:0px;
+		left:40px;
+		font-size:6pt;
+		font-family:'Open Sans', helvetica, sans-serif;
+		color:#FFFFFF;
+		font-weight:800;
+		display:inline-block;
+		text-transform:uppercase;
+		//font-variant:small-caps;
+		border-radius:0 0 3px 3px;
+		padding:5px 2px 0;
+	}
+/*Compass*/
+	#directionframe{
+		background-image:url('http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/images/directions.png'); 
+		background-repeat:no-repeat; 
+		background-position:center;
+		background-size:55px 55px;
+		height:60px;
+		width:60px;
+		position: absolute;
+		right:250px;
+		bottom:50px;
+		border-radius:10px;
+		margin-right:10px;
+	}
+/*Footer*/
+	#footer{
+		position:absolute;
+		bottom:0;
+		width:100%;
+		height:40px;
+		z-index:5 !important;
+	}
+	#footer > div.wrap{
+		padding: 8px !important;
+		color: #FFFFFF;
+	}
+	#footer.wrap { 
+		text-align: center !important;
+	}
