@@ -188,7 +188,7 @@ jogana.onclick = function() {
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '4';
     });
-    map.setView([12.029, 8.701], 14);
+    map.setView([12.029, 8.701], 15);
     //map.fitBounds(map.featureLayer.getBounds());
     return false;
 };

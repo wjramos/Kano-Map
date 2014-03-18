@@ -118,7 +118,15 @@
 		height:auto;
 		overflow:hidden;
 		word-wrap:break-word;
-		
+	}
+	.pill > .col12{
+		border-bottom-width:0px;
+	}
+	.pill > .col12:last-child{
+		border-radius: 0;
+	}
+	.pill > .col12:first-child{
+		border-radius: 0;
 	}
 	#control-pane1{
 		position:absolute; 
