@@ -1,11 +1,9 @@
 /*Page*/
 	body{
 		overflow:hidden;
-		-webkit-user-select: none; /* Chrome/Safari */        
+		-webkit-user-select: none; /* Chrome/Safari */
 		-moz-user-select: none; /* Firefox */
 		-ms-user-select: none; /* IE10+ */
-
-		/* Rules below not implemented in browsers yet */
 		-o-user-select: none;
 		user-select: none;
 	}
@@ -24,8 +22,8 @@
 		position:absolute;
 		top:0;
 		width:100%;
-		height:120px; 
-		padding:20px 0; 
+		height:120px;
+		padding:20px 0;
 		box-shadow: 0 5px #4b4b52;
 		z-index:5 !important;
 	}
@@ -70,9 +68,9 @@
 	}
 	#about-desc{}
 /*Map*/
-	#map { 
-		position:absolute; 
-		top:125px; 
+	#map {
+		position:absolute;
+		top:125px;
 		bottom:40px;
 		width:100%;
 	}
@@ -107,7 +105,7 @@
 /*Navigation*/
 	#control-panel{
 		postion:absolute;
-		top:125px; 
+		top:125px;
 		bottom:40px;
 		left:0px;
 		width:150px;
@@ -129,13 +127,13 @@
 		border-radius: 0;
 	}
 	#control-pane1{
-		position:absolute; 
+		position:absolute;
 		top:0;
 		bottom:0;
 		left:0;
 	}
 	#control-pane2{
-		position:absolute; 
+		position:absolute;
 		top:0;
 		bottom:0;
 		left:75px;
@@ -246,8 +244,8 @@
 	}
 /*Info Pane*/
 	#info-pane{
-		position:absolute; 
-		top:125px; 
+		position:absolute;
+		top:125px;
 		bottom:40px;
 		right:0;
 		overflow-y:auto;
@@ -286,17 +284,17 @@
 		height:60px;
 	}
 	.leather{
-		background-image:url('http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/images/leather.png'); 
-		background-repeat:no-repeat; 
+		background-image:url('http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/images/leather.png');
+		background-repeat:no-repeat;
 		background-position:center;
 		background-size: 35px 35px;
 	}
 	.legend-tag{
-		width:40px;
+		width:39px;
 		height:25px;
-		position:absolute;
-		bottom:0px;
-		left:40px;
+		position:relative;
+		margin-left:1px;
+		margin-top:-5px;
 		font-size:6pt;
 		font-family:'Open Sans', helvetica, sans-serif;
 		color:#FFFFFF;
@@ -306,11 +304,15 @@
 		//font-variant:small-caps;
 		border-radius:0 0 3px 3px;
 		padding:5px 2px 0;
+		z-index:-1;
+	}
+	#legend-tags > .legend-tag:first-child{
+		margin-left:41px;
 	}
 /*Compass*/
 	#directionframe{
-		background-image:url('http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/images/directions.png'); 
-		background-repeat:no-repeat; 
+		background-image:url('http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/images/directions.png');
+		background-repeat:no-repeat;
 		background-position:center;
 		background-size:55px 55px;
 		height:60px;
@@ -333,6 +335,6 @@
 		padding: 8px !important;
 		color: #FFFFFF;
 	}
-	#footer.wrap { 
+	#footer.wrap {
 		text-align: center !important;
 	}

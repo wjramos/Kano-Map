@@ -1,3 +1,35 @@
+/*
+Table of contents:
+Page
+    Animation bug fix for panels
+Map
+    Call Map from MapBox
+        - set bounds ([Southwest],[Northeast])
+        - disable zoom, fade, and pan (inertia) animations (Looks bad with Google Maps layer)
+        - set initial center point and zoom level
+    Call Google Map Satellite layer
+
+Map Functionality
+    Zoom controls - move to top left
+    Center markers on click
+    Zoom to double click location on map
+    Hide/Show layer
+        Function
+    Zoom-level based options
+        Zoom > 12 : Hide MapBox, Show Google Satellite
+        *Hide points when zoomed out
+
+Map UI - Panels and Menues
+    UI Toggles
+        Show/Hide Navigation
+        Show/Hide Info Pane
+    Navigation Bar Functionality
+    Info Pane Functionality
+    Industry Filter Functionality
+
+* Not ready
+
+*/
 //Make sure no animation bug occurs
 setTimeout(function() {
     document.body.className += ' animate';
@@ -16,11 +48,10 @@ var map = L.mapbox.map('map', 'everettprogram.hgi93jp5', {
 map.options.maxZoom = 19;
 map.options.minZoom = 11;
 //Call Google Map Satellite Layer
-var googleLayer = new L.Google('SATELLITE'); 
+var googleLayer = new L.Google('SATELLITE');
 map.addLayer(googleLayer);
-//
+//MAP CONTROLS
 //Zoom control reposition
-//map.zoomControl.setPosition('topright');
 map.zoomControl.setPosition('topleft');
 //Center point on click
 map.featureLayer.on('click', function(e) {
@@ -30,7 +61,7 @@ map.featureLayer.on('click', function(e) {
 map.on('dblclick', function(e) {
     map.setView(e.latlng, map.getZoom() + 1);
 });
-//
+//Layer change opacity HideShowLAyer(class,opacity)
 function HideShowLayer(matchClass,content)
     {
     var elems = document.getElementsByTagName('*'),i;
@@ -48,17 +79,17 @@ function HideShowLayer(matchClass,content)
             if (map.getZoom() > 12) {
                 document.getElementById('_GMapContainer').style.opacity='1';
                 HideShowLayer("leaflet-layer","0");
-            } else { 
+            } else {
                 document.getElementById('_GMapContainer').style.opacity='0';
                 HideShowLayer("leaflet-layer","1");
-                } 
+                }
         });
-//map.featureLayer.setFilter(function() { 
+//map.featureLayer.setFilter(function() {
                     //return true; //Show all
-                    //}); 
-//map.featureLayer.setFilter(function() { 
+                    //});
+//map.featureLayer.setFilter(function() {
                     //    return f.properties['type'] === 'Polygon';
-                    //}); 
+                    //});
 
 //MAP UI
 //Toggle UI features
@@ -84,6 +115,8 @@ showinfopanel.onclick = function() {
 };
 //Estate filter Pane
 //filter variables
+var controls1 = document.getElementById('controls1').children;
+var controls2 = document.getElementById('controls2').children;
 var all = document.getElementById('filter-all');
 var township = document.getElementById('filter-township');
 var bompai = document.getElementById('filter-bompai');
@@ -97,17 +130,10 @@ var hadejia = document.getElementById('filter-hadejia');
 var misc = document.getElementById('filter-misc');
 //Show all
 all.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+    controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+    controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+    this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         // Returning true for all markers shows everything.
         return true;
@@ -117,17 +143,10 @@ all.onclick = function() {
 };
 //Show bompai
 bompai.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '1';
     });
@@ -136,17 +155,10 @@ bompai.onclick = function() {
 };
 //Show township
 township.onclick = function() {
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '2';
     });
@@ -155,17 +167,10 @@ township.onclick = function() {
 };
 //Show tokarawa
 tokarawa.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '3';
     });
@@ -174,17 +179,10 @@ tokarawa.onclick = function() {
 };
 //Show jogana
 jogana.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '4';
     });
@@ -194,17 +192,10 @@ jogana.onclick = function() {
 };
 //Show challawa
 challawa.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '5';
     });
@@ -213,17 +204,10 @@ challawa.onclick = function() {
 };
 //Show sharada
 sharada.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '6';
     });
@@ -232,17 +216,10 @@ sharada.onclick = function() {
 };
 //Show dawanau
 dawanau.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '7';
     });
@@ -251,17 +228,10 @@ dawanau.onclick = function() {
 };
 //Show Hadejia Road
 hadejia.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '8';
     });
@@ -271,17 +241,10 @@ hadejia.onclick = function() {
 };
 //Show zaria Road
 zaria.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    misc.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '9';
     });
@@ -291,17 +254,10 @@ zaria.onclick = function() {
 };
 //Show Misc/Other
 misc.onclick = function() {
-    township.className = 'control-button row2 col12 button center align-middle';
-    bompai.className = 'control-button row2 col12 button center align-middle';
-    tokarawa.className = 'control-button row2 col12 button center align-middle';
-    challawa.className = 'control-button row2 col12 button center align-middle';
-    sharada.className = 'control-button row2 col12 button center align-middle';
-    jogana.className = 'control-button row2 col12 button center align-middle';
-    dawanau.className = 'control-button row2 col12 button center align-middle';
-    zaria.className = 'control-button row2 col12 button center align-middle';
-    hadejia.className = 'control-button row2 col12 button center align-middle';
-    all.className = 'control-button row2 col12 button center align-middle';
-    this.className = 'control-button row2 col12 button center align-middle active';
+  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
+  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  this.className += ' active';
+
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '10';
     });
@@ -316,12 +272,12 @@ map.featureLayer.on('click', function(e) {
     infopane.className = 'fill-lighten3 offcanvas-right animate pin-right keyline-left active';
     var feature = e.layer.feature;
     var info = '<h2 class="center">' + feature.properties.title + '</h2>' + '</br>' + '<h3>' + feature.properties.Estate + '</h3>' + '<h4>Industry: ' + feature.properties.Industry + '</h4>' + '</br>' + '<strong>Latitude: </strong>' + e.latlng.lat + '</br>' + '<strong>Longitude: </strong>' + e.latlng.lng + '</br><p>' + feature.properties.description + '</p>';
-    //feature.getLatLng() 
     document.getElementById('info').innerHTML = info;
 });
 //Legend / Industry filtering
 var indall = document.getElementById('industry-all');
 var indleather = document.getElementById('industry-leather');
+//Show all industries
 indall.onclick = function() {
     indleather.className = 'legend-button center align-middle big button keyline-all dark icon leather';
     this.className = 'legend-button center align-middle big button keyline-all dark active';
@@ -331,6 +287,7 @@ indall.onclick = function() {
     map.fitBounds(map.featureLayer.getBounds());
     return false;
 };
+//Show Leather
 indleather.onclick = function() {
     indall.className = 'legend-button center align-middle big button keyline-all dark';
     this.className = 'legend-button center align-middle big button dark icon keyline-all leather active';

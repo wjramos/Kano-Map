@@ -14,24 +14,23 @@
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet'>
 	<link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet'>
-	<script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
-	<script src="http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/Google.js"></script>
-	<link href='http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/mapstyle.css'
-	rel='stylesheet'>
+	<script src='http://maps.google.com/maps/api/js?v=3.2&sensor=false'></script>
+	<script src='Google.js'></script>
+	<link href='mapstyle.css' rel='stylesheet'>
 </head>
 
 <body>
 
 	<!--Content Frame-->
 	<div class='' id='content'>
-    
+
 		<!--Map-->
 		<div class='center quiet' id='map'></div>
 
 		<!--Navigation Pane-->
 		<div class='fill-darken1 col12 offcanvas-left animate pin-left active keyline-right'
 		id='control-panel'>
-        
+
 			<!--First Navigation Column-->
 			<div class='control-pane' id='control-pane1'>
 				<div class='controls' id='controls1'>
@@ -109,27 +108,32 @@
 			"infohide fill-darken3 icon dark close" href="#" id=
 			"hide-info"></a></div>
 
-       		<!--Show Info Pane Button--> 
+       		<!--Show Info Pane Button-->
 		<a class="infoshow fill-lighten3 icon big prev" href="#" id=
 		"show-info"></a>
-		
+
         	<!--Legend/ Industry Filter-->
 		<div class='row1 active' id='legend-pane'>
 			<div id='legend'>
 
-               			<!--Tags/Labels-->
+					<!--Buttons-->
+				<div id='legend-buttons'>
+	                		<a class=
+					'legend-button center align-middle big button keyline-all active'
+					href='#' id='industry-all'>All</a>
+	               			<a class=
+					'legend-button center align-middle big button keyline-all dark icon leather'
+					href='#' id='industry-leather'></a>
+				</div>
+
+				<!--Tags/Labels-->
+			<div id='legend-tags'>
 				<div class='legend-tag center align-middle fill-darken3' id=
 				'indtag-leather'>
 					Leather
 				</div>
+			</div>
 
-               			<!--Buttons-->
-                		<a class=
-				'legend-button center align-middle big button keyline-all active'
-				href='#' id='industry-all'>All</a> 
-               			<a class=
-				'legend-button center align-middle big button keyline-all dark icon leather'
-				href='#' id='industry-leather'></a>
 			</div>
 		</div>
 
@@ -137,9 +141,9 @@
 		id='directionframe'></div>
 
 	</div>
-    
+
 	<!--Load Javascript-->
 	<script src=
-	'http://www.metrokanoindustrialrecovery.org/wp-content/themes/latitude/mapscript.js'></script>
+	'mapscript.js'></script>
 </body>
 </html>
