@@ -115,8 +115,6 @@ showinfopanel.onclick = function() {
 };
 //Estate filter Pane
 //filter variables
-var controls1 = document.getElementById('controls1').children;
-var controls2 = document.getElementById('controls2').children;
 var all = document.getElementById('filter-all');
 var township = document.getElementById('filter-township');
 var bompai = document.getElementById('filter-bompai');
@@ -130,10 +128,11 @@ var hadejia = document.getElementById('filter-hadejia');
 var misc = document.getElementById('filter-misc');
 //Show all
 all.onclick = function() {
-    controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-    controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+    var controls = document.querySelectorAll('#controls > div a');
+    for (var i = 0; i < controls.length; i++) {
+      controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+    }
     this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         // Returning true for all markers shows everything.
         return true;
@@ -142,11 +141,12 @@ all.onclick = function() {
     return false;
 };
 //Show bompai
-bompai.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+bompai.onclick = function () {
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+    controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '1';
     });
@@ -155,11 +155,12 @@ bompai.onclick = function() {
 };
 //Show township
 township.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+    controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
-    map.featureLayer.setFilter(function(f) {
+      map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '2';
     });
     map.fitBounds(map.featureLayer.getBounds());
@@ -167,10 +168,11 @@ township.onclick = function() {
 };
 //Show tokarawa
 tokarawa.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+    controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '3';
     });
@@ -179,10 +181,11 @@ tokarawa.onclick = function() {
 };
 //Show jogana
 jogana.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+    var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+    controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '4';
     });
@@ -192,10 +195,11 @@ jogana.onclick = function() {
 };
 //Show challawa
 challawa.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+  controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '5';
     });
@@ -204,10 +208,11 @@ challawa.onclick = function() {
 };
 //Show sharada
 sharada.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+  controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '6';
     });
@@ -216,10 +221,11 @@ sharada.onclick = function() {
 };
 //Show dawanau
 dawanau.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+  controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '7';
     });
@@ -228,10 +234,11 @@ dawanau.onclick = function() {
 };
 //Show Hadejia Road
 hadejia.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+  controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '8';
     });
@@ -241,10 +248,11 @@ hadejia.onclick = function() {
 };
 //Show zaria Road
 zaria.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+  controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '9';
     });
@@ -254,10 +262,11 @@ zaria.onclick = function() {
 };
 //Show Misc/Other
 misc.onclick = function() {
-  controls1.className = controls1.className.replace(new RegExp('\b' + active + '\b'),'');
-  controls2.className = controls2.className.replace(new RegExp('\b' + active + '\b'),'');
+  var controls = document.querySelectorAll('#controls > div a');
+  for (var i = 0; i < controls.length; i++) {
+  controls[i].className = controls[i].className.replace(new RegExp('\b' + active + '\b'), '');
+  }
   this.className += ' active';
-
     map.featureLayer.setFilter(function(f) {
         return f.properties['EstateID'] === '10';
     });

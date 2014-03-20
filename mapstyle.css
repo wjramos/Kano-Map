@@ -116,6 +116,7 @@
 		height:auto;
 		overflow:hidden;
 		word-wrap:break-word;
+		max-height:100%
 	}
 	.pill > .col12{
 		border-bottom-width:0px;
@@ -158,6 +159,9 @@
 		font-family: 'Open Sans', helvetica, sans-serif;
 		font-weight: 800;
 		padding-bottom:30px;
+		position:relative;
+		top:0;
+		display:inline-block;
 	}
 /*Navigation Buttons Colors*/
 	#filter-all{}
